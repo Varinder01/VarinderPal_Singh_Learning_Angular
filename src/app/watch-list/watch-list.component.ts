@@ -23,4 +23,10 @@ export class WatchListComponent {
       { id: 4, company: "Audemars Piguet", region: "Switzerland", color: "Gold", type: "Luxury", available: false }
     ]
 
+  selectedWatch?: Watch;
+  //function to set which student to display
+  selectWatch(Watch: Watch): void {
+    this.selectedWatch = Watch;
+
+}
 }

@@ -1,8 +1,15 @@
-<div *ngFor="let watch of watchList" class="watchlist">
-  <p>ID: {{ watch.id }}</p>
-  <p>Company: {{ watch.company }}</p>
-  <p>Region: {{ watch.region }}</p>
-  <p>Color: {{ watch.color }}</p>
-  <p>Type: {{ watch.type }}</p>
-  <p>Availability: {{ watch.available ? 'In Stock' : 'Out of Stock' }}</p>
+<div>
+  <table>
+    <tbody>
+    <tr *ngFor="let Watch of watchList" (click)="selectWatch(Watch)">
+
+      <td>{{ Watch.id }}</td>
+      <td>{{ Watch.company }}</td>
+      <td>{{ Watch.region }}</td>
+      <td>{{ Watch.color }}</td>
+      <td>{{ Watch.available ? 'Yes' : 'No' }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <app-student-detail></app-student-detail>
 </div>
