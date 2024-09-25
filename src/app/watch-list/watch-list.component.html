@@ -1,4 +1,8 @@
-<app-watch-list-item></app-watch-list-item>
-<app-watch-list-item></app-watch-list-item>
-<app-watch-list-item></app-watch-list-item><app-watch-list-item></app-watch-list-item>
-
+<div *ngFor="let watch of watchList" class="watchlist">
+  <p>ID: {{ watch.id }}</p>
+  <p>Company: {{ watch.company }}</p>
+  <p>Region: {{ watch.region }}</p>
+  <p>Color: {{ watch.color }}</p>
+  <p>Type: {{ watch.type }}</p>
+  <p>Availability: {{ watch.available ? 'In Stock' : 'Out of Stock' }}</p>
+</div>
