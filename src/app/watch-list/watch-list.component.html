@@ -1,15 +1,14 @@
 <div>
   <table>
     <tbody>
-    <tr *ngFor="let Watch of watchList" (click)="selectWatch(Watch)">
-
-      <td>{{ Watch.id }}</td>
-      <td>{{ Watch.company }}</td>
-      <td>{{ Watch.region }}</td>
-      <td>{{ Watch.color }}</td>
-      <td>{{ Watch.available ? 'Yes' : 'No' }}</td>
+    <tr *ngFor="let watch of watchList" (click)="selectWatch(watch)">
+      <td>{{ watch.id }}</td>
+      <td>{{ watch.company }}</td>
+      <td>{{ watch.region }}</td>
+      <td>{{ watch.color }}</td>
+      <td>{{ watch.available ? 'Yes' : 'No' }}</td>
     </tr>
     </tbody>
   </table>
-  <app-student-detail></app-student-detail>
+ <app-watch-list-item [Watch]="selectedWatch"></app-watch-list-item>
 </div>

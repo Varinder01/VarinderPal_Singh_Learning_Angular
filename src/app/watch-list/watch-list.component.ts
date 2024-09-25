@@ -25,8 +25,8 @@ export class WatchListComponent {
 
   selectedWatch?: Watch;
   //function to set which student to display
-  selectWatch(Watch: Watch): void {
-    this.selectedWatch = Watch;
+  selectWatch(watch: Watch): void {
+    this.selectedWatch = watch;
 
 }
 }

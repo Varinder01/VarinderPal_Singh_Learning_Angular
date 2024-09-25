@@ -1,1 +1,8 @@
-<p>watch-list-item works!</p>
+<div *ngIf="Watch" class="watchlist">
+  <p>ID: {{ Watch.id }}</p>
+  <h1>Company: {{ Watch.company }}</h1>
+  <p>Region: {{ Watch.region }}</p>
+  <p>Color: {{ Watch.color }}</p>
+  <p>Type: {{ Watch.type }}</p>
+  <p>Availability: {{ Watch.available ? 'In Stock' : 'Out of Stock' }}</p>
+</div>
