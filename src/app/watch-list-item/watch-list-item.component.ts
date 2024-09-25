@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-watch-list-item',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './watch-list-item.component.css'
 })
 export class WatchListItemComponent {
+  @Input() watch? :any;
 
 }
