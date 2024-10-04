@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Watch} from "../Shared/Modules/watch";
 import {WatchListItemComponent} from "../watch-list-item/watch-list-item.component";
 import {NgForOf} from "@angular/common";
+import {WatchService} from "../service/watch.service";
 
 @Component({
   selector: 'app-watch-list',
@@ -14,6 +15,8 @@ import {NgForOf} from "@angular/common";
   styleUrl: './watch-list.component.css'
 })
 export class WatchListComponent {
+  watch: Watch[] = [];
+  constructor(private WatchService: WatchService) {}
 
 
   selectedWatch?: Watch;
