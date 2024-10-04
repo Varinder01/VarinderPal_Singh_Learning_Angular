@@ -15,8 +15,20 @@ import {WatchService} from "../service/watch.service";
   styleUrl: './watch-list.component.css'
 })
 export class WatchListComponent {
-  watch: Watch[] = [];
+  watches: Watch[] = [];
   constructor(private WatchService: WatchService) {}
+
+  ngOnInit(): void {
+    this.getWatches();
+  }
+
+  getWatches(): void {
+    this.WatchService.getWatches().subscribe(
+      (data: Watch[]) => {
+        this.watches = data;
+      }
+      );
+  }
 
 
   selectedWatch?: Watch;
