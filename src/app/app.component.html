@@ -1,4 +1,5 @@
 <div class="container">
   <h2>Top Watches List</h2>
+  <app-watch-list-item *ngIf="selectedWatch" [Watch]="selectedWatch"></app-watch-list-item>
  <app-watch-list></app-watch-list>
 </div>
