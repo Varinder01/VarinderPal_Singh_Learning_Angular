@@ -5,4 +5,5 @@ export interface Watch {
   color: string;
   type: string;
   available: boolean;
+  imgSrc:string
 }

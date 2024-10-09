@@ -1,7 +1,8 @@
 <div>
   <table>
     <tbody>
-    <tr *ngFor="let watch of watches" (click)="selectWatch(watch)">
+    <tr *ngFor="let watch of watches" [routerLink]="['Watchs',watch.id]">
+
       <td>{{ watch.id }}</td>
       <td>{{ watch.company }}</td>
       <td>{{ watch.region }}</td>
@@ -10,5 +11,5 @@
     </tr>
     </tbody>
   </table>
- <app-watch-list-item [Watch]="selectedWatch"></app-watch-list-item>
+
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import { Watch } from "./Shared/Modules/watch";
 import { CommonModule} from "@angular/common";
 import {WatchListComponent} from "./watch-list/watch-list.component";
@@ -11,7 +11,7 @@ import {WatchService} from "./service/watch.service";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, WatchListComponent, WatchListItemComponent],
+  imports: [RouterOutlet, CommonModule, WatchListComponent, WatchListItemComponent,RouterLinkActive,RouterLink],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -3,13 +3,16 @@ import {Watch} from "../Shared/Modules/watch";
 import {WatchListItemComponent} from "../watch-list-item/watch-list-item.component";
 import {NgForOf} from "@angular/common";
 import {WatchService} from "../service/watch.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-watch-list',
   standalone: true,
   imports: [
     WatchListItemComponent,
+    RouterLink,
     NgForOf
+
   ],
   templateUrl: './watch-list.component.html',
   styleUrl: './watch-list.component.css'
