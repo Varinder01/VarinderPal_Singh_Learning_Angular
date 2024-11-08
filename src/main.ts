@@ -10,11 +10,12 @@ import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.compone
 
 
 const routes: Routes = [
-  {path:'', redirectTo: '/watch', pathMatch: 'full'},
-  { path: 'Watch', component: WatchListComponent },
-  { path: 'Watch/:id', component: WatchListItemComponent},
+  { path: '', redirectTo: '/watch', pathMatch: 'full' },
+  { path: 'watch', component: WatchListComponent },
+  { path: 'watch/:id', component: WatchListItemComponent },
   { path: 'modify-list-item', component: ModifyListItemComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: WatchListComponent }
+
 ];
 
 
