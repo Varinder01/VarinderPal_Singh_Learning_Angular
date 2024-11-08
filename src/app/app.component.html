@@ -1,11 +1,13 @@
 <div class="container">
-  <h2>Top Watches List</h2>
-  <app-watch-list-item *ngIf="selectedWatch" [Watch]="selectedWatch"></app-watch-list-item>
-</div>
-<router-outlet></router-outlet>
-<div class="nav-bar">
+
+  <h2>Top Watches List</h2>\
   <nav>
     <a routerLink="/Watch" routerLinkActive="active">Watch List</a>
     <a routerLink="/modify-list-item" routerLinkActive="active">Modify Watch</a>
   </nav>
+  <app-watch-list-item *ngIf="selectedWatch" [Watch]="selectedWatch"></app-watch-list-item>
+</div>
+<router-outlet></router-outlet>
+<div class="nav-bar">
+
 </div>

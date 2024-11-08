@@ -1,3 +1,11 @@
 .watchlist{
   border:solid black 2px ;
+  padding: 100px;
   }
+img{
+  flex: auto;
+}
+.watch{
+  text-align: right;
+
+}
