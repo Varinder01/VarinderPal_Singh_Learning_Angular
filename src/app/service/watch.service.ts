@@ -1,42 +1,39 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
-import {watchList} from "../data/mock-content";
-import {Watch} from "../Shared/Modules/watch";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Watch } from '../Shared/Modules/watch';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class WatchService {
-  private watchList: Watch[] = watchList;
+  private apiUrl = `api/watches`;
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  // Get all watches
   getWatches(): Observable<Watch[]> {
-    return of(this.watchList);
+    return this.http.get<Watch[]>(this.apiUrl);
   }
+
+  // Get a single watch by ID
   getWatchById(id: number): Observable<Watch | undefined> {
-    const watch = this.watchList.find(watch => watch.id === id);
-    return of(watch);
+    return this.http.get<Watch>(`${this.apiUrl}/${id}`);
   }
 
-  addWatch(newWatch: Watch): Observable<Watch[]> {
-    this.watchList.push(newWatch);
-    return of(this.watchList);
+  // Add a new watch
+  addWatch(newWatch: Watch): Observable<Watch> {
+    return this.http.post<Watch>(this.apiUrl, newWatch);
   }
 
-  updateWatch(updatedWatch: Watch): Observable<Watch[]> {
-    const index = this.watchList.findIndex(watch => watch.id === updatedWatch.id);
-    if (index !== -1) {
-      this.watchList[index] = updatedWatch;
-    }
-    return of(this.watchList);
+  // Update an existing watch
+  updateWatch(updatedWatch: Watch): Observable<Watch> {
+    return this.http.put<Watch>(`${this.apiUrl}/${updatedWatch.id}`, updatedWatch);
   }
 
-  removeWatchById(id: number): Observable<Watch | undefined> {
-    const index = this.watchList.findIndex(watch => watch.id === id);
-    let removedWatch: Watch | undefined;
-    if (index !== -1) {
-      removedWatch = this.watchList.splice(index, 1)[0];
-    }
-    return of(removedWatch);
+  // Remove a watch by ID
+  removeWatchById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
