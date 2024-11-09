@@ -1,4 +1,4 @@
-
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
   <div *ngFor="let watch of watches" class="watchlist">
     <app-watch-list-item [Watch]="watch"></app-watch-list-item>
 

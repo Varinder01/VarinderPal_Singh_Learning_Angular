@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Watch } from "../Shared/Modules/watch";
 import { WatchListItemComponent } from "../watch-list-item/watch-list-item.component";
-import { NgForOf } from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import { WatchService } from "../service/watch.service";
 import { Router } from "@angular/router";
 
@@ -10,7 +10,8 @@ import { Router } from "@angular/router";
   standalone: true,
   imports: [
     WatchListItemComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './watch-list.component.html',
   styleUrls: ['./watch-list.component.css']
@@ -18,6 +19,7 @@ import { Router } from "@angular/router";
 export class WatchListComponent implements OnInit {
   watches: Watch[] = [];
   selectedWatch?: Watch;
+  errorMessage: string = ''; // Store error message
 
   constructor(
     private watchService: WatchService,
@@ -33,6 +35,10 @@ export class WatchListComponent implements OnInit {
     this.watchService.getWatches().subscribe(
       (data: Watch[]) => {
         this.watches = data;
+      },
+      (error) => {
+        this.errorMessage = 'Failed to load watches. Please try again later.'; // Set error message
+        console.error('Error fetching watches', error);
       }
     );
   }
@@ -44,9 +50,15 @@ export class WatchListComponent implements OnInit {
 
   // Delete a watch using the service
   deleteWatch(id: number): void {
-    this.watchService.removeWatchById(id).subscribe(() => {
-      // After deleting, refresh the watch list
-      this.getWatches();
-    });
+    this.watchService.removeWatchById(id).subscribe(
+      () => {
+        // After deleting, refresh the watch list
+        this.getWatches();
+      },
+      (error) => {
+        this.errorMessage = 'Failed to delete watch. Please try again later.'; // Error handling for delete
+        console.error('Error deleting watch', error);
+      }
+    );
   }
 }

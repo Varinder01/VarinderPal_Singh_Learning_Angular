@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WatchService } from '../service/watch.service';
 import { Watch } from '../Shared/Modules/watch';
-import {NgIf} from "@angular/common";
+import { NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -13,11 +13,12 @@ import {NgIf} from "@angular/common";
     NgIf
   ],
   templateUrl: './modify-list-item.component.html',
-  styleUrl: './modify-list-item.component.css'
+  styleUrls: ['./modify-list-item.component.css']
 })
 export class ModifyListItemComponent implements OnInit {
   watchForm: FormGroup;
   currentWatchId: number | null = null;
+  errorMessage: string = ''; // Store error message
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +32,6 @@ export class ModifyListItemComponent implements OnInit {
       region: ['', [Validators.required]],
       color: ['', [Validators.required]],
       type: ['', [Validators.required]],
-
     });
   }
 
@@ -45,13 +45,19 @@ export class ModifyListItemComponent implements OnInit {
 
   loadWatchForEditing(): void {
     if (this.currentWatchId !== null) {
-      this.watchService.getWatchById(this.currentWatchId).subscribe((watch: Watch | undefined) => {
-        if (watch) {
-          this.watchForm.patchValue(watch);
-        } else {
-          alert('Watch not found!');
+      this.watchService.getWatchById(this.currentWatchId).subscribe(
+        (watch: Watch | undefined) => {
+          if (watch) {
+            this.watchForm.patchValue(watch);
+          } else {
+            this.errorMessage = 'Watch not found!';
+          }
+        },
+        (error) => {
+          this.errorMessage = 'Failed to load watch details. Please try again later.'; // Error message on load failure
+          console.error('Error loading watch details', error);
         }
-      });
+      );
     }
   }
 
@@ -61,14 +67,26 @@ export class ModifyListItemComponent implements OnInit {
 
       if (this.currentWatchId === null) {
         // Create a new watch
-        this.watchService.addWatch(watchData).subscribe(() => {
-          this.router.navigate(['/watch']);
-        });
+        this.watchService.addWatch(watchData).subscribe(
+          () => {
+            this.router.navigate(['/watch']);
+          },
+          (error) => {
+            this.errorMessage = 'Failed to add watch. Please try again later.'; // Error message on add failure
+            console.error('Error adding watch', error);
+          }
+        );
       } else {
         // Update the existing watch
-        this.watchService.updateWatch(watchData).subscribe(() => {
-          this.router.navigate(['/watch']);
-        });
+        this.watchService.updateWatch(watchData).subscribe(
+          () => {
+            this.router.navigate(['/watch']);
+          },
+          (error) => {
+            this.errorMessage = 'Failed to update watch. Please try again later.'; // Error message on update failure
+            console.error('Error updating watch', error);
+          }
+        );
       }
     }
   }
