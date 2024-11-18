@@ -4,6 +4,7 @@ export interface Watch {
   region: string;
   color: string;
   type: string;
+  price: number;
   available: boolean;
   imgSrc:string;
 }
