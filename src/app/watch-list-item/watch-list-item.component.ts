@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CurrencyPipe, NgIf, NgOptimizedImage, TitleCasePipe, UpperCasePipe} from "@angular/common";
+import {RegionTypeCombinationPipe} from "../region-type-combination.pipe";
 
 @Component({
   selector: 'app-watch-list-item',
@@ -9,7 +10,8 @@ import {CurrencyPipe, NgIf, NgOptimizedImage, TitleCasePipe, UpperCasePipe} from
     NgOptimizedImage,
     UpperCasePipe,
     CurrencyPipe,
-    TitleCasePipe
+    TitleCasePipe,
+    RegionTypeCombinationPipe
   ],
   templateUrl: './watch-list-item.component.html',
   styleUrl: './watch-list-item.component.css'

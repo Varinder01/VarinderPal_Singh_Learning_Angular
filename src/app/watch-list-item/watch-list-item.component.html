@@ -8,9 +8,10 @@
   <p>ID: {{ Watch.id }}</p>
   <h1>Company: {{ Watch.company |uppercase}}</h1>
   <p>Region: {{ Watch.region }}</p>
-  <p>title case used Color: {{ Watch.color | titlecase }}</p>
+  <p> Color: {{ Watch.color | titlecase }}</p>
   <p>Type: {{ Watch.type }}</p>
-  <p>Type: {{ Watch.price |currency }}</p>
+  <p>price: {{ Watch.price |currency }}</p>
+  <p>{{Watch | regionTypeCombination}}</p>
 
   <p>Availability: {{ Watch.available ? 'In Stock' : 'Out of Stock' }}</p>
 </div>
