@@ -4,6 +4,7 @@ import { WatchListItemComponent } from "../watch-list-item/watch-list-item.compo
 import {NgForOf, NgIf} from "@angular/common";
 import { WatchService } from "../service/watch.service";
 import { Router } from "@angular/router";
+import {HighlighthoverDirective} from "../highlighthover.directive";
 
 @Component({
   selector: 'app-watch-list',
@@ -11,7 +12,8 @@ import { Router } from "@angular/router";
   imports: [
     WatchListItemComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    HighlighthoverDirective
   ],
   templateUrl: './watch-list.component.html',
   styleUrls: ['./watch-list.component.css']

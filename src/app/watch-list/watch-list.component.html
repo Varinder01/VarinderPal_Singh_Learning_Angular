@@ -3,6 +3,6 @@
     <app-watch-list-item [Watch]="watch"></app-watch-list-item>
 
 
-  <button (click)="editWatch(watch)">Edit</button>
-  <button (click)="deleteWatch(watch.id)">Delete</button>
+  <button (click)="editWatch(watch)" appHighlighthover [hoverColor]="'lightblue'">Edit</button>
+  <button (click)="deleteWatch(watch.id)" appHighlighthover [hoverColor]="'lightblue'">Delete</button>
 </div>

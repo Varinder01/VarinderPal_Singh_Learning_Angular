@@ -1,10 +1,10 @@
-<div *ngIf="Watch" class="watchlist">
+<div *ngIf="Watch" class="watchlist" appHighlighthover [hoverColor]="'lightgreen'">
   <img
     [src]="Watch.imgSrc"
     alt="Watch Photo"
     height="200"
     width="200"/>
-<div class="watch">
+<div   class="watch">
   <p>ID: {{ Watch.id }}</p>
   <h1>Company: {{ Watch.company |uppercase}}</h1>
   <p>Region: {{ Watch.region }}</p>
