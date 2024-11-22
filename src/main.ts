@@ -17,10 +17,10 @@ const routes: Routes = [
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(), // Ensure that HTTP client is provided
+    provideHttpClient(),
     provideRouter(routes),
     importProvidersFrom(
-      HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 }) // Use mock data with a 1 second delay
+      HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 })
     )
   ]
 }).catch((err) => console.error(err));
